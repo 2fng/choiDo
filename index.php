@@ -10,13 +10,13 @@
         include ('Template/_banner-area.php');
     /*  include banner area  */
 
+    /*  include special price section  */
+    include ('Template/_special-price.php');
+    /*  include special price section  */
+
     /*  include top sale section */
         include ('Template/_top-sale.php');
     /*  include top sale section */
-
-    /*  include special price section  */
-         include ('Template/_special-price.php');
-    /*  include special price section  */
 
     /*  include banner ads  */
         include ('Template/_banner-ads.php');
