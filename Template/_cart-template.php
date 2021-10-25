@@ -126,27 +126,31 @@
                                                 <div>
                                                     <div class="input-group">
                                                         <label class="label col-4">First name</label>
-                                                        <input class="input--style-4 col-8" type="text" name="first_name">
+                                                        <input class="input--style-4 col-7" type="text" name="first_name">
                                                     </div>
                                                 </div>
+                                                <br>
                                                 <div>
                                                     <div class="input-group">
                                                         <label class="label col-4">Last name</label>
-                                                        <input class="input--style-4 col-8" type="text" name="last_name">
+                                                        <input class="input--style-4 col-7" type="text" name="last_name">
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="row row-space">
                                                 <div>
                                                     <div class="input-group">
-                                                        <label class="label col-4">Email Address</label>
-                                                        <input class="input--style-6 col-8" type="email" name="email">
+                                                        <label class="label col-4">Your Email</label>
+                                                        <input class="input--style-6 col-7" type="email" name="email">
                                                     </div>
                                                 </div>
+                                                <br>
                                                 <div>
+                                                    <br>
                                                     <div class="input-group">
                                                         <label class="label col-5">Gender</label>
-                                                        <div class="p-t-10 col-7">
+                                                        <div class="p-t-10 col-6">
                                                             <label class="radio-container m-r-45">Male
                                                                 <input type="radio" checked="checked" name="gender">
                                                                 <span class="checkmark"></span>
@@ -159,20 +163,23 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="row row-space">
                                                 <div>
                                                     <div class="input-group">
-                                                        <label class="label col-4">Address</label>
-                                                        <input class="input--style-4 col-8" type="email" name="address">
+                                                        <label class="label col-4">Address..</label>
+                                                        <input class="input--style-4 col-7" type="email" name="address">
                                                     </div>
                                                 </div>
                                                 <div>
+                                                    <br>
                                                     <div class="input-group">
-                                                        <label class="label col-6">Phone Number</label>
-                                                        <input class="input--style-4 col-6" type="text" name="phone">
+                                                        <label class="label col-6">Your Number</label>
+                                                        <input class="input--style-4 col-5" type="text" name="phone">
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="input-group">
                                                 <label class="label col-6">Payment method</label>
                                                 <div class="rs-select2 js-select-simple select--no-search">
