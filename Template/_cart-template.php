@@ -167,7 +167,7 @@
                                             <div class="row row-space">
                                                 <div>
                                                     <div class="input-group">
-                                                        <label class="label col-4">Address..</label>
+                                                        <label class="label col-4">Address...</label>
                                                         <input class="input--style-4 col-7" type="email" name="address">
                                                     </div>
                                                 </div>
