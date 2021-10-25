@@ -1,3 +1,29 @@
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Icons font CSS-->
+    <link href="../HTML%20Template/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../HTML%20Template/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="../HTML%20Template/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../HTML%20Template/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="../HTML%20Template/css/main.css" rel="stylesheet" media="all">
+</head>
+
 <!-- Shopping cart section  -->
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -89,6 +115,81 @@
                     <div class="border-top py-4">
                         <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? count($subTotal) : 0; ?> item):&nbsp; <span class="text-danger">$<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?></span> </span> </h5>
 <!--                        <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>-->
+
+                        <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+                            <div class="wrapper wrapper--w680">
+                                <div class="card card-4">
+                                    <div class="card-body">
+                                        <h2 class="title">Order Form</h2>
+                                        <form method="POST">
+                                            <div class="row row-space">
+                                                <div>
+                                                    <div class="input-group">
+                                                        <label class="label col-4">First name</label>
+                                                        <input class="input--style-4 col-8" type="text" name="first_name">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <label class="label col-4">Last name</label>
+                                                        <input class="input--style-4 col-8" type="text" name="last_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row row-space">
+                                                <div>
+                                                    <div class="input-group">
+                                                        <label class="label col-4">Email Address</label>
+                                                        <input class="input--style-6 col-8" type="email" name="email">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <label class="label col-5">Gender</label>
+                                                        <div class="p-t-10 col-7">
+                                                            <label class="radio-container m-r-45">Male
+                                                                <input type="radio" checked="checked" name="gender">
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                            <label class="radio-container">Female
+                                                                <input type="radio" name="gender">
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row row-space">
+                                                <div>
+                                                    <div class="input-group">
+                                                        <label class="label col-4">Address</label>
+                                                        <input class="input--style-4 col-8" type="email" name="address">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <label class="label col-6">Phone Number</label>
+                                                        <input class="input--style-4 col-6" type="text" name="phone">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-group">
+                                                <label class="label col-6">Payment method</label>
+                                                <div class="rs-select2 js-select-simple select--no-search">
+                                                    <select name="subject col-6">
+                                                        <option disabled="disabled" selected="selected">Choose option</option>
+                                                        <option>COD</option>
+                                                        <option>VNPay</option>
+                                                    </select>
+                                                    <div class="select-dropdown"></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <a href="Template/payingForm.php" class="btn btn-warning mt-3" >Proceed to Buy</a>
                     </div>
                 </div>
@@ -99,3 +200,13 @@
     </div>
 </section>
 <!-- !Shopping cart section  -->
+
+<!-- Jquery JS-->
+<script src="../HTML%20Template/vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="../HTML%20Template/vendor/select2/select2.min.js"></script>
+<script src="../HTML%20Template/vendor/datepicker/moment.min.js"></script>
+<script src="../HTML%20Template/vendor/datepicker/daterangepicker.js"></script>
+
+<!-- Main JS-->
+<script src="../HTML%20Template/js/global.js"></script>
