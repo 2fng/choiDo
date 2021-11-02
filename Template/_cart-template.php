@@ -197,7 +197,10 @@
                             </div>
                         </div>
 
-                        <a href="Template/payingForm.php" class="btn btn-warning mt-3" >Proceed to Buy</a>
+                        <a href="#" class="btn btn-warning mt-3" >Proceed to Buy</a>
+                        <div id="paypal-payment-button" class="btn btn-warning mt-3" style="background-color:#ffffff">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,3 +220,25 @@
 
 <!-- Main JS-->
 <script src="../HTML%20Template/js/global.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=ARQcsOrLmdIqNFYCF8Pr31RiyGiJvNd6obCir18GsljQQCfDLEKbvObTeRofBR3_5qG6gS6YdP1LCfku"></script>
+<script>paypal.Buttons({
+        createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: <?php echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?>
+                }
+            }]
+        });
+    },
+    
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details){
+            console.log(details)
+        })
+    }
+}).render('#paypal-payment-button');</script>
+<script>
+    var totalAmount = <?php echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?>
+</script>
