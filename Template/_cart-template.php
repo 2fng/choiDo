@@ -223,7 +223,7 @@
 
 <script src="https://www.paypal.com/sdk/js?client-id=ARQcsOrLmdIqNFYCF8Pr31RiyGiJvNd6obCir18GsljQQCfDLEKbvObTeRofBR3_5qG6gS6YdP1LCfku"></script>
 <script>paypal.Buttons({
-        createOrder: function(data, actions) {
+    createOrder: function(data, actions) {
         return actions.order.create({
             purchase_units: [{
                 amount: {
@@ -232,11 +232,16 @@
             }]
         });
     },
-    
+
     onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details){
-            console.log(details)
-        })
+            return actions.order.capture().then(function(details){
+                console.log(details)
+                console.log(alert('Payment done successfully'))
+            });
+    },
+
+    onCancel: function(data) {
+        console.log(alert('Payment cancel for some reason'))
     }
 }).render('#paypal-payment-button');</script>
 <script>
