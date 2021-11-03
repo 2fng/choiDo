@@ -180,26 +180,34 @@
                                                 </div>
                                             </div>
                                             <br>
-                                            <div class="input-group">
-                                                <label class="label col-6">Payment method</label>
-                                                <div class="rs-select2 js-select-simple select--no-search">
-                                                    <select name="subject col-6">
-                                                        <option disabled="disabled" selected="selected">Choose option</option>
-                                                        <option>COD</option>
-                                                        <option>VNPay</option>
-                                                    </select>
-                                                    <div class="select-dropdown"></div>
-                                                </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="#" class="btn btn-warning mt-3" >Proceed to Buy</a>
+                        <a href="#" class="btn btn-warning mt-3" >Cash on delivery</a>
                         <div id="paypal-payment-button" class="btn btn-warning mt-3" style="background-color:#ffffff">
 
+                        </div>
+                        <hr>
+                        <div class="input-group">
+                                <label class="label col-6">Pay with QR code</label>
+                                <br>
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select onchange="document.getElementById('preview').src = this.value" name="subject col-6" id="paymentQR">
+                                            <option value="./assets/QR/1.jpg">Momo</option>
+                                            <option value="./assets/QR/2.jpg">Viettel Pay</option>
+                                            <option value="./assets/QR/3.jpg">Zalo Pay</option>
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <img id="preview" src="./assets/QR/1.jpg" height="150px" width="150px">
+                                    <div class="select-dropdown"></div>
+                                    <br>
+                                    <p>Total Bill: <strong><?php echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?>$</p></strong>
+                                    <p>Please provide this information in message box: <strong>Name, Number, Address, Bill Detail</p></strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,4 +254,15 @@
 }).render('#paypal-payment-button');</script>
 <script>
     var totalAmount = <?php echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?>
+
+//     var pictureList = [
+//     "../asets/QR/1",
+//     "../asets/QR/2",
+//     "../asets/QR/3", 
+//     ];
+
+// $('#paymentQR').change(function () {
+//     var val = parseInt($('#paymentQR').val());
+//     $('img').attr("src",pictureList[val]);
+// });
 </script>
