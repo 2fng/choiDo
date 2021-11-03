@@ -169,7 +169,7 @@
                                                 //Content
                                                 $mail->isHTML(true);                                  // Set email format to HTML
                                                 $mail->Subject = 'Xac nhan hoa don';
-                                                $mail->Body    = "Don hang cua ban da duoc xac nhan: ${totalAmount}$ \n Cam on ban da lua chon dich vu cua chung toi!";
+                                                $mail->Body    = "Don hang cua ban da duoc xac nhan: ${totalAmount}$ \n Cam on ban da lua chon dich vu cua chung toi! Vui long thanh toan khi nhan hang hoac thanh toan bang cac phuong thuc online tai gio hang";
                                                 //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                                             
                                                 $mail->send();
