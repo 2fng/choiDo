@@ -3,7 +3,21 @@
     $item_id = $_GET['item_id'] ?? 1;
     foreach ($product->getData() as $item) :
         if ($item['item_id'] == $item_id) :
+
+            shuffle($product_shuffle);
 ?>
+
+<?php
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if (isset($_POST['product_sale'])){
+            // call method addToCart
+            $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
+        }
+    }
+    
+    $in_cart = $Cart->getCartId($product->getData('cart'));
+?>
+
 <section id="product" class="py-3">
     <div class="container">
         <div class="row">
@@ -14,13 +28,17 @@
                         <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
                     </div>
                     <div class="col">
-                        <?php
-                        if (in_array($item['item_id'], $Cart->getCartId($product->getData('cart')) ?? [])){
-                            echo '<button type="submit" disabled class="btn btn-success font-size-16 form-control">In the Cart</button>';
-                        }else{
-                            echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-16 form-control">Add to Cart</button>';
-                        }
-                        ?>
+                    <form method="post">
+                                <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? '1'; ?>">
+                                <input type="hidden" name="user_id" value="<?php echo 1; ?>">
+                                <?php
+                                if (in_array($item['item_id'], $in_cart ?? [])){
+                                    echo '<button type="submit" disabled class="btn btn-warning font-size-16 form-control">In the Cart</button>';
+                                }else{
+                                    echo '<button type="submit" name="product_sale" class="btn btn-warning font-size-16 form-control">Add to Cart</button>';
+                                }
+                                ?>
+                    </form>
                     </div>
                 </div>
             </div>

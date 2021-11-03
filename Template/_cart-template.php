@@ -35,7 +35,7 @@
         if (isset($_POST['wishlist-submit'])){
             $Cart->saveForLater($_POST['item_id']);
         }
-    }
+    }   
 ?>
 
 <section id="cart" class="py-3 mb-5">
@@ -121,7 +121,67 @@
                                 <div class="card card-4">
                                     <div class="card-body">
                                         <h2 class="title">Order Form</h2>
-                                        <form method="POST">
+
+                                        <?php
+                                        
+                                        include "mail/PHPMailer/src/PHPMailer.php";
+                                        include "mail/PHPMailer/src/Exception.php";
+                                        include "mail/PHPMailer/src/OAuth.php";
+                                        include "mail/PHPMailer/src/POP3.php";
+                                        include "mail/PHPMailer/src/SMTP.php";
+                                        
+                                        use PHPMailer\PHPMailer\PHPMailer;
+                                        use PHPMailer\PHPMailer\Exception;
+
+                                        $totalAmount = isset($subTotal) ? $Cart->getSum($subTotal) : 0;
+                                    
+                                        if (isset($_POST['send'])){
+
+                                            $mail = new PHPMailer(true);
+                                            // Passing `true` enables exceptions
+
+                                            try {
+                                                //Server settings
+                                                $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+                                                $mail->isSMTP();                                      // Set mailer to use SMTP
+                                                $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                                $mail->Username = 'choido.figure@gmail.com';                 // SMTP username
+                                                $mail->Password = 'agmavgyankqxidjt';                           // SMTP password
+                                                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                                                $mail->Port = 587;                                    // TCP port to connect to
+                                            
+                                                //Recipients
+                                                $mail->setFrom('choido.figure@gmail.com', 'Choi Do Toyzone');
+
+                                                //$mail->addAddress('choido.figure@gmail.com', 'Hua Son Tung');     // Add a recipient
+                                                $mail->addAddress($_POST["email"]);
+
+                                                // Name is optional
+                                                // $mail->addReplyTo('info@example.com', 'Information');
+                                                // $mail->addCC('cc@example.com');
+                                                // $mail->addBCC('bcc@example.com');
+                                            
+                                                // //Attachments
+                                                // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                                // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                            
+                                                //Content
+                                                $mail->isHTML(true);                                  // Set email format to HTML
+                                                $mail->Subject = 'Xac nhan hoa don';
+                                                $mail->Body    = "Don hang cua ban da duoc xac nhan: ${totalAmount}$ \n Cam on ban da lua chon dich vu cua chung toi!";
+                                                //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                                            
+                                                $mail->send();
+                                                echo 'Message has been sent';
+                                            } catch (Exception $e) {
+                                                echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                                            }
+                                                   
+                                        }
+                                    ?>
+
+                                        <form method="post">
                                             <div class="row row-space">
                                                 <div>
                                                     <div class="input-group">
@@ -142,7 +202,7 @@
                                                 <div>
                                                     <div class="input-group">
                                                         <label class="label col-4">Your Email</label>
-                                                        <input class="input--style-6 col-7" type="email" name="email">
+                                                        <input class="input--style-6 col-7" type="email" name="email" id="email">
                                                     </div>
                                                 </div>
                                                 <br>
@@ -180,6 +240,14 @@
                                                 </div>
                                             </div>
                                             <br>
+                                            <div>
+                                                    <br>
+                                                    <div class="input-group">
+                                                        <p></p>
+                                                        <input type="submit" name="send" class="btn btn-warning mt-3 form-control" value="Submit">
+                                                        <p></p>
+                                                    </div>
+                                                </div>
                                         </form>
                                     </div>
                                 </div>
@@ -254,15 +322,4 @@
 }).render('#paypal-payment-button');</script>
 <script>
     var totalAmount = <?php echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?>
-
-//     var pictureList = [
-//     "../asets/QR/1",
-//     "../asets/QR/2",
-//     "../asets/QR/3", 
-//     ];
-
-// $('#paymentQR').change(function () {
-//     var val = parseInt($('#paymentQR').val());
-//     $('img').attr("src",pictureList[val]);
-// });
 </script>
